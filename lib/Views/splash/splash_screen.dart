@@ -19,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               RoundButton(
-                title: 'Home Screen hh',
+                title: 'Home Screen',
                 onPress: () {
                   Navigator.pushNamed(context, RoutesName.homeScreen);
                 },
