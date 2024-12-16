@@ -1,4 +1,3 @@
-import 'package:clean_architecture/config/Components/internet_exception.dart';
 import 'package:clean_architecture/config/Components/round_button.dart';
 import 'package:clean_architecture/config/routes/routes_name.dart';
 import 'package:flutter/material.dart';
@@ -19,9 +18,8 @@ class _SplashScreenState extends State<SplashScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              InternetException(),
               RoundButton(
-                title: 'Home Screen',
+                title: 'Home Screen hh',
                 onPress: () {
                   Navigator.pushNamed(context, RoutesName.homeScreen);
                 },
