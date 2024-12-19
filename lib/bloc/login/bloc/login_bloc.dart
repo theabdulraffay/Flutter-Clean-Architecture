@@ -50,7 +50,9 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     }).onError((error, stackTrace) {
       emit(
         state.copyWith(
-            message: error.toString(), postApiStatus: PostApiStatus.error),
+          message: error.toString(),
+          postApiStatus: PostApiStatus.error,
+        ),
       );
     });
   }
