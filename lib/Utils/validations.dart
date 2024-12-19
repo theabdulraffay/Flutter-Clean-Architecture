@@ -1,11 +1,11 @@
-library email_validator;
+// library email_validator;
 
 import 'dart:core';
 
 /// The Type enum
 ///
 /// The domain type is either None, Alphabetic, Numeric or AlphaNumeric
-enum SubdomainType { None, Alphabetic, Numeric, AlphaNumeric }
+enum SubdomainType { none, alphabetic, numeric, alphaNumeric }
 
 ///The EmailValidator entry point
 ///
@@ -14,7 +14,7 @@ class EmailValidator {
   static int _index = 0;
 
   static const String _atomCharacters = "!#\$%&'*+-/=?^_`{|}~";
-  static SubdomainType _domainType = SubdomainType.None;
+  static SubdomainType _domainType = SubdomainType.none;
 
   static bool _isDigit(String c) {
     return c.codeUnitAt(0) >= 48 && c.codeUnitAt(0) <= 57;
@@ -51,12 +51,12 @@ class EmailValidator {
   static bool _isDomain(String c, bool allowInternational) {
     if (c.codeUnitAt(0) < 128) {
       if (_isLetter(c) || c == '-') {
-        _domainType = SubdomainType.Alphabetic;
+        _domainType = SubdomainType.alphabetic;
         return true;
       }
 
       if (_isDigit(c)) {
-        _domainType = SubdomainType.Numeric;
+        _domainType = SubdomainType.numeric;
         return true;
       }
 
@@ -64,7 +64,7 @@ class EmailValidator {
     }
 
     if (allowInternational) {
-      _domainType = SubdomainType.Alphabetic;
+      _domainType = SubdomainType.alphabetic;
       return true;
     }
 
@@ -76,26 +76,26 @@ class EmailValidator {
   static bool _isDomainStart(String c, bool allowInternational) {
     if (c.codeUnitAt(0) < 128) {
       if (_isLetter(c)) {
-        _domainType = SubdomainType.Alphabetic;
+        _domainType = SubdomainType.alphabetic;
         return true;
       }
 
       if (_isDigit(c)) {
-        _domainType = SubdomainType.Numeric;
+        _domainType = SubdomainType.numeric;
         return true;
       }
 
-      _domainType = SubdomainType.None;
+      _domainType = SubdomainType.none;
 
       return false;
     }
 
     if (allowInternational) {
-      _domainType = SubdomainType.Alphabetic;
+      _domainType = SubdomainType.alphabetic;
       return true;
     }
 
-    _domainType = SubdomainType.None;
+    _domainType = SubdomainType.none;
 
     return false;
   }
@@ -160,7 +160,7 @@ class EmailValidator {
 
     // Note: by allowing AlphaNumeric,
     // we get away with not having to support punycode.
-    if (_domainType == SubdomainType.Numeric) {
+    if (_domainType == SubdomainType.numeric) {
       return false;
     }
 

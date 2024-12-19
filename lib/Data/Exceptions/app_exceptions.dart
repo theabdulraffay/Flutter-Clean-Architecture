@@ -1,6 +1,7 @@
 class AppExceptions implements Exception {
   final String? _message;
   final String? _prefix;
+  // What does it do?
   AppExceptions([this._message, this._prefix]);
 
   @override
