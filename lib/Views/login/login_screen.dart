@@ -11,25 +11,35 @@ class _LoginScreenState extends State<LoginScreen> {
   final emailFocusNode = FocusNode();
   final passwordFocusNode = FocusNode();
   final formkey = GlobalKey<FormState>();
+  late LoginBloc _loginBloc;
+  @override
+  void initState() {
+    super.initState();
+    _loginBloc = LoginBloc();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Form(
-        key: formkey,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          spacing: 20,
-          children: [
-            EmailInputWidget(
-              node: emailFocusNode,
-            ),
-            PasswordInputWidget(
-              node: passwordFocusNode,
-            ),
-            LoginButton(formkey: formkey),
-          ],
+      body: BlocProvider(
+        create: (context) => _loginBloc,
+        child: Form(
+          key: formkey,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            spacing: 20,
+            children: [
+              EmailInputWidget(
+                node: emailFocusNode,
+              ),
+              PasswordInputWidget(
+                node: passwordFocusNode,
+              ),
+              LoginButton(formkey: formkey),
+            ],
+          ),
         ),
       ),
     );
