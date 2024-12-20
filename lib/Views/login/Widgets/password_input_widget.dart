@@ -29,7 +29,6 @@ class PasswordInputWidget extends StatelessWidget {
             if (value!.isEmpty) {
               return 'Password is required';
             }
-
             return null;
           },
         );

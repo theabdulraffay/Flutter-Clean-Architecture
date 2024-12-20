@@ -1,3 +1,4 @@
+import '../../repository/auth/login_repository.dart';
 import 'Widgets/widgets.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -15,7 +16,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   void initState() {
     super.initState();
-    _loginBloc = LoginBloc();
+    _loginBloc = LoginBloc(loginRepository: LoginRepository());
   }
 
   @override
