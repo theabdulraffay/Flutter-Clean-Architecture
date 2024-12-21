@@ -16,7 +16,7 @@ class EmailInputWidget extends StatelessWidget {
           keyboardType: TextInputType.emailAddress,
           focusNode: node,
           decoration: InputDecoration(
-            hintText: 'Email',
+            hintText: 'Email eh',
             prefixIcon: Icon(Icons.email),
             border: OutlineInputBorder(),
           ),
