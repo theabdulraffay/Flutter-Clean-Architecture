@@ -25,6 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 LocalStorage localStorage = LocalStorage();
                 localStorage.clearValue('token').then((value) {
                   localStorage.clearValue('isLogin').then((val) {
+                    // ignore: use_build_context_synchronously
                     Navigator.pushNamed(context, RoutesName.loginScreen);
                   });
                 });
