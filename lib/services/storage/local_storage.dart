@@ -12,7 +12,7 @@ class LocalStorage {
   }
 
   Future<bool> clearValue(String key) async {
-    storage.delete(key: key);
+    await storage.delete(key: key);
     return true;
   }
 }

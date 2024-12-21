@@ -5,6 +5,7 @@ import 'package:clean_architecture/repository/auth/login_repository.dart';
 
 class LoginHttpApiRepository implements LoginRepository {
   final api = NetworkServicesApi();
+  @override
   Future<UserModel> loginApi(dynamic data) async {
     final response = await api.postApi(
       AppUrls.loginapi,

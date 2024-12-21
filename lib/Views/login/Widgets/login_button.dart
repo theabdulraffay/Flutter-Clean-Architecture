@@ -1,5 +1,6 @@
 import 'package:clean_architecture/Utils/enums.dart';
 import 'package:clean_architecture/bloc/login/bloc/login_bloc.dart';
+import 'package:clean_architecture/config/routes/routes_name.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,6 +23,7 @@ class LoginButton extends StatelessWidget {
         }
 
         if (state.postApiStatus == PostApiStatus.success) {
+          Navigator.pushNamed(context, RoutesName.homeScreen);
           FlushBarHelper.showSuccessFlushBar(
             context,
             state.message.toString(),

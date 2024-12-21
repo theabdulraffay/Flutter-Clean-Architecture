@@ -1,4 +1,7 @@
+import 'package:clean_architecture/services/storage/local_storage.dart';
 import 'package:flutter/material.dart';
+
+import '../../config/routes/routes_name.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({
@@ -19,7 +22,12 @@ class _HomeScreenState extends State<HomeScreen> {
           Center(
             child: TextButton(
               onPressed: () {
-                Navigator.pop(context);
+                LocalStorage localStorage = LocalStorage();
+                localStorage.clearValue('token').then((value) {
+                  localStorage.clearValue('isLogin').then((val) {
+                    Navigator.pushNamed(context, RoutesName.loginScreen);
+                  });
+                });
               },
               child: Text('Home Screen'),
             ),

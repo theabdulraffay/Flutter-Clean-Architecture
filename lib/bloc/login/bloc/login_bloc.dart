@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import '../../../Utils/enums.dart';
 import '../../../repository/auth/login_repository.dart';
+import '../../../services/session_manager/session_controller.dart';
 part 'login_event.dart';
 part 'login_state.dart';
 // part 'login_bloc.freezed.dart';
@@ -40,7 +41,9 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         postApiStatus: PostApiStatus.loading,
       ),
     );
-    await loginRepository.loginApi(data).then((value) {
+    await loginRepository.loginApi(data).then((value) async {
+      await SessionController().saveUserInPreference(value);
+      await SessionController().getUserFromPreference();
       emit(
         state.copyWith(
           postApiStatus: PostApiStatus.success,
